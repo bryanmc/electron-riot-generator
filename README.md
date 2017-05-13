@@ -32,6 +32,7 @@ More info here: [electron-analytics](https://github.com/NeutrinoMetrics/electron
 
 * [Trending JS Repos on Github this Month](https://github.com/trending?l=javascript&since=monthly)
 * [Frontend Developers Guide for 2017](https://frontendmasters.com/books/front-end-handbook/2017)
+* [TodoMVC ](http://todomvc.com/)- Every example you could ever want/need to get started with any framework or library
 
 ## New & Trendy JS Links
 
