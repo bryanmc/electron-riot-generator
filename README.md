@@ -24,3 +24,27 @@ EA.init("HkxXaheVx-");
 
 More info here: [electron-analytics](https://github.com/NeutrinoMetrics/electron-analytics)
 
+
+
+# Awesome Existing and Trending Developer Resources
+
+---
+
+## Take Care of Yourself
+
+This is a little dashboard that tries to take care of you when you're using your terminal. It tells you cute, self care things, and tries not to stress you out. It shows:
+
+* the last tweets from [@tinycarebot](https://twitter.com/tinycarebot), [@selfcare\_bot](https://twitter.com/selfcare_bot) and [@magicrealismbot](https://twitter.com/magicrealismbot). The first two tend to tweet reminders about taking breaks, drinking water and looking outside, and the latter tells you strange, whimsical stories. If you don't like these bots, they're configurable!
+* your `git `commits from today and the last 7 days. When I get stressed out because I think I haven't done anything, it turns out that I only think about big and serious commits, and forget about all the tiny amounts of work I've actually done throughout. Hopefully this will help you too.
+* the weather, because you might get rained on.
+
+[Github](https://github.com/notwaldorf/tiny-care-terminal)
+
+---
+
+## Turn Node JS Apps into Cross Platform Executable
+
+This command line interface enables you to package your Node.js project into an executable that can be run even on devices without Node.js installed.  Creates executables for Windows, Mac, Linux and Freebsd.
+
+[Github ](https://github.com/zeit/pkg)\| [NPM](https://www.npmjs.com/package/pkg)
+
