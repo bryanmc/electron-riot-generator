@@ -14,7 +14,7 @@ If you have insights, comments, ideas or wish to contribute to this project, ple
 
 1. install **gitbook-app-generator** CLI
 2. install** gulp-cli** globally
-   1. `npm install --global`**`gulp-cli`**
+   1. `npm install --globalgulp-cli`
 3. install gulp locally
    1. npm install --save-dev **gulp**
 
@@ -42,6 +42,9 @@ More info here: [electron-analytics](https://github.com/NeutrinoMetrics/electron
 * [Frontend Developers Guide for 2017](https://frontendmasters.com/books/front-end-handbook/2017)
 * [TodoMVC ](http://todomvc.com/)- Every example you could ever want/need to get started with any framework or library
 * [Sizzy.co](https://sizzy.co) - Responsive frontend testing
+* [Air BnB JS Style Guide](https://github.com/airbnb/javascript) - Pretty good guidelines to follow
+* [The Best Rich Editor](https://github.com/ianstormtaylor/slate) - Slate Extensible JS Rich Text Editor
+* [JS Bundle Optimization](https://github.com/facebook/prepack) - FB's optimizer for your JS bundles, Prepack
 
 ## New & Trendy JS Links
 
