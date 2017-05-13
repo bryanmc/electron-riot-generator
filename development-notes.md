@@ -81,13 +81,25 @@ function parseMD() {
 }
 ```
 
+### Renaming files when using \`gulp.src\`:
+
+The the `gulp-rename` package is required and then simply add it as a step in the method chain:
+
+```js
+//....
+.pipe(rename('filename.json')) //whatever you want
+// ...
+```
+
+http://stackoverflow.com/questions/28593660/gulp-copy-and-rename-a-file
+
 ---
 
 ## Generating Pretty JSON Output
 
 For those times when you need to read it both in files and in the terminal, this package works:
 
-* https://www.npmjs.com/package/prettyjson
+* [https://www.npmjs.com/package/prettyjson](https://www.npmjs.com/package/prettyjson)
 
 ---
 
