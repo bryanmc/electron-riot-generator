@@ -27,13 +27,13 @@ The CLI tool will need to be able to read some config values from package.json i
 
 ---
 
-# Running Shell Commands in Javascript
+## Running Shell Commands in Javascript
 
 There is still only one tool for this job, nothing else is required: [ShellJS](https://github.com/shelljs/shelljs)
 
 ---
 
-# Converting Markdown to JSON
+## Converting Markdown to JSON
 
 The CLI tool inspects every relevant file of the Gitbook's Github repository and converts the markdown into a more workable form, JSON.  There are several packages that claim to do the job, such as this which was not fully explored:
 
@@ -91,7 +91,7 @@ The the `gulp-rename` package is required and then simply add it as a step in th
 // ...
 ```
 
-http://stackoverflow.com/questions/28593660/gulp-copy-and-rename-a-file
+[http://stackoverflow.com/questions/28593660/gulp-copy-and-rename-a-file](http://stackoverflow.com/questions/28593660/gulp-copy-and-rename-a-file)
 
 ---
 
