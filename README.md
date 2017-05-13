@@ -28,9 +28,10 @@ More info here: [electron-analytics](https://github.com/NeutrinoMetrics/electron
 
 ---
 
-## Trending JS Repos on Github this Month
+## Quick Links
 
-[https://github.com/trending?l=javascript&since=monthly](https://github.com/trending?l=javascript&since=monthly)
+* [Trending JS Repos on Github this Month](https://github.com/trending?l=javascript&since=monthly)
+* [Frontend Developers Guide for 2017](https://frontendmasters.com/books/front-end-handbook/2017)
 
 ---
 
