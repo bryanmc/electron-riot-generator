@@ -83,5 +83,15 @@ function parseMD() {
 
 ---
 
+## Generating Pretty JSON Output
+
+For those times when you need to read it both in files and in the terminal, this package works:
+
+* https://www.npmjs.com/package/prettyjson
+
+---
+
+# **...**
+
 
 
