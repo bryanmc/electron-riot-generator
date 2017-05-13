@@ -1,5 +1,16 @@
 # Development Notes
 
+---
+
+## Open Source Electron Apps
+
+Some apps from which we may or may not draw inspiration:
+
+* **BoostNote.io** - [Website ](https://boostnote.io)\| [Github](https://github.com/BoostIO/Boostnote/)
+  * A full featured app, polished for all platforms
+* **PlayCode.io** - [Website ](http://playcode.io)\| Github
+  * Simple, minimilistic setup and structure
+
 ## Bash Script
 
 The **gitbook-app-generator **package is responsible for parsing an building the app out and thus will need to be installed by anyone who uses a Gitbook App Generator in order to build the app from the Gitbook source.  Part of that may be a shell/bash script which handles the initial generator:
