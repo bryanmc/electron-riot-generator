@@ -39,11 +39,10 @@ Example Gulpfile.js
 
 ```js
 var gulp = require('gulp');
-// var md2json = require('md-to-json');
 var MarkdownIt = require('markdown-it');
 var md = new MarkdownIt();
 
-gulp.task('md2json_task', function() {
+gulp.task('md2json-test', function() {
   return gulp.src('./test.md')
   .pipe(parseMD())
   .pipe(gulp.dest('./test-parsed'));
@@ -52,8 +51,12 @@ gulp.task('md2json_task', function() {
 function parseMD() {
   // you're going to receive Vinyl files as chunks
   function transform(file, cb) {
-    // read and convert MD file contents to JSON string using the Markdown-It library
-    file.contents = new Buffer(JSON.stringify(md.parse(String(file.contents))));
+    // read and modify file contents
+    // file.contents = new Buffer(String(file.contents) + ' some modified content');
+    var jsonString = JSON.stringify(md.parse(String(file.contents)));
+    console.log(`\nGenerating Sample output:\n\n{${jsonString.substr(0, 100)}}\n\n`);
+    var jsonBuffer = new Buffer(jsonString);
+    file.contents = jsonBuffer;
     // if there was some error, just pass as the first parameter here
     cb(null, file);
   }
@@ -65,7 +68,6 @@ function parseMD() {
   // Additionally, you want to require the `event-stream` somewhere else.
   return require('event-stream').map(transform);
 }
-
 ```
 
 ---
