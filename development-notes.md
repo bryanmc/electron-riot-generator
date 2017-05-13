@@ -11,6 +11,8 @@ Some apps from which we may or may not draw inspiration:
 * **PlayCode.io** - [Website ](http://playcode.io)\| Github
   * Simple, minimilistic setup and structure
 
+---
+
 ## Bash Script
 
 The **gitbook-app-generator **package is responsible for parsing an building the app out and thus will need to be installed by anyone who uses a Gitbook App Generator in order to build the app from the Gitbook source.  Part of that may be a shell/bash script which handles the initial generator:
@@ -46,7 +48,7 @@ Ultimately, the best candidate for the job was an extremely well developed and d
 * [http://stackoverflow.com/questions/40442058/convert-markdown-to-json-object](http://stackoverflow.com/questions/40442058/convert-markdown-to-json-object)
 * [http://stackoverflow.com/questions/22835609/gulp-ondata-how-to-pass-data-to-next-pipe](http://stackoverflow.com/questions/22835609/gulp-ondata-how-to-pass-data-to-next-pipe)
 
-Example Gulpfile.js
+### Example Gulpfile.js
 
 ```js
 var gulp = require('gulp');
