@@ -16,5 +16,59 @@ The CLI tool will need to be able to read some config values from package.json i
 
 ---
 
+# Running Shell Commands in Javascript
+
+There is still only one tool for this job, nothing else is required: [ShellJS](https://github.com/shelljs/shelljs)
+
+---
+
+# Converting Markdown to JSON
+
+The CLI tool inspects every relevant file of the Gitbook's Github repository and converts the markdown into a more workable form, JSON.  There are several packages that claim to do the job, such as this which was not fully explored:
+
+* [https://www.npmjs.com/package/markdown-to-json](https://www.npmjs.com/package/markdown-to-json)
+
+Ultimately, the best candidate for the job was an extremely well developed and documented wrapper called **Markdown-It** combined with **Gulp.**
+
+* [https://markdown-it.github.io/markdown-it/\#MarkdownIt.parse](https://markdown-it.github.io/markdown-it/#MarkdownIt.parse)
+* [https://www.npmjs.com/package/gulp](https://www.npmjs.com/package/gulp)
+* [http://stackoverflow.com/questions/40442058/convert-markdown-to-json-object](http://stackoverflow.com/questions/40442058/convert-markdown-to-json-object)
+* [http://stackoverflow.com/questions/22835609/gulp-ondata-how-to-pass-data-to-next-pipe](http://stackoverflow.com/questions/22835609/gulp-ondata-how-to-pass-data-to-next-pipe)
+
+Example Gulpfile.js
+
+```js
+var gulp = require('gulp');
+// var md2json = require('md-to-json');
+var MarkdownIt = require('markdown-it');
+var md = new MarkdownIt();
+
+gulp.task('md2json_task', function() {
+  return gulp.src('./test.md')
+  .pipe(parseMD())
+  .pipe(gulp.dest('./test-parsed'));
+});
+
+function parseMD() {
+  // you're going to receive Vinyl files as chunks
+  function transform(file, cb) {
+    // read and convert MD file contents to JSON string using the Markdown-It library
+    file.contents = new Buffer(JSON.stringify(md.parse(String(file.contents))));
+    // if there was some error, just pass as the first parameter here
+    cb(null, file);
+  }
+
+  // returning the map will cause your transform function to be called
+  // for each one of the chunks (files) you receive. And when this stream
+  // receives a 'end' signal, it will end as well.
+  //
+  // Additionally, you want to require the `event-stream` somewhere else.
+  return require('event-stream').map(transform);
+}
+
+```
+
+---
+
 
 

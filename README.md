@@ -10,6 +10,14 @@ If you have insights, comments, ideas or wish to contribute to this project, ple
 
 ---
 
+## Setup Gitbook App Generator CLI
+
+1. install **gitbook-app-generator** CLI
+2. install** gulp-cli** globally
+   1. `npm install --global`**`gulp-cli`**
+3. install gulp locally
+   1. npm install --save-dev **gulp**
+
 ## Prepare Electron App Analytics Integration
 
 Create an account at [NeutrinoMetrics](http://neutrinometrics.net "A new Electron app analytics platform in beta stage, where you can get a free beta account.") and follow the integration steps just below:
