@@ -144,7 +144,9 @@ console.log(pjson.version);
 
 **Dedent **is useful for messages that are too long allowing you to format them with line-breaks but still properly display in the terminal output:
 
-* https://www.npmjs.com/package/dedent
+* [https://www.npmjs.com/package/dedent](https://www.npmjs.com/package/dedent)
+
+---
 
 ## Fuschia OS README
 
