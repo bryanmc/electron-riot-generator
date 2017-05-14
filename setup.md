@@ -4,7 +4,7 @@ This is an app created with the Electron cross-platform desktop.  These app gene
 
 ## Package Details
 
-Define your app's details below  to be used when running **npm-init **as values in **package.json**.  
+Define your app's details below  to be used when running **npm-init **as values in **package.json**.
 
 | Key | Value |
 | :--- | :--- |
@@ -15,11 +15,9 @@ Define your app's details below  to be used when running **npm-init **as values 
 | package keywords | electron, riot, gitbook-app-generator |
 | package license | MIT |
 
-> ### Init'ing project folder and NPM package.json
+> ### Initiating project folder and NPM package.json
 
 ```bash
-#!exec
-
 mkdir %package root directory%
 cd %package root directory%
 npm init - y
@@ -28,14 +26,14 @@ npm init - y
 > ### Updating package.json values with package details
 
 ```bash
-#!exec
-
 json -I -f package.json -e 'this.name="%package name%"'
 json -I -f package.json -e 'this.description="%package description%"'
 json -I -f package.json -e 'this.author="%package author%"'
 json -I -f package.json -e 'this.keywords="%package keywords%"'
 json -I -f package.json -e 'this.license="%package license%"'
 ```
+
+
 
 
 
