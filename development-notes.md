@@ -105,6 +105,32 @@ For those times when you need to read it both in files and in the terminal, this
 
 ---
 
+## Updating JSON files such as package.json
+
+To handle in-place update of JSON files, for example replacing the values of our package details in the project's package.json file, we can use the **json package.**
+
+* http://stackoverflow.com/questions/25329241/edit-package-json-from-commandline
+
+* http://trentm.com/json/\#FEATURE-In-place-editing
+
+I originally found this "promzard" utility for drop-in enhancements of npm package init, but decided ultimately to handle it via file content updates.
+
+* https://github.com/npm/promzard
+
+The following package also looks like a possibility:
+
+* https://github.com/npm/init-package-json
+
+And finally, NPM's documentation for package.json handling could be of some use as well:
+
+* https://docs.npmjs.com/files/package.json
+
+## Fuschia OS README
+
+An abstract overview of Fuschia's UI structure and base of components which could potentially be used as inspiration for the Generator UI
+
+* https://github.com/fuchsia-mirror/sysui
+
 # **...**
 
 
