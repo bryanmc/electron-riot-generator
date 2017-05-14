@@ -14,9 +14,11 @@ If you have insights, comments, ideas or wish to contribute to this project, ple
 
 1. install **gitbook-app-generator** CLI
 2. install** gulp-cli** globally
-   1. `npm install --globalgulp-cli`
+   1. `npm install --global gulp-cli`
 3. install gulp locally
-   1. npm install --save-dev **gulp**
+   1. `npm install --save-dev`**`gulp`**
+4. install **json **globally
+   1. `npm install --global json`
 
 ## Prepare Electron App Analytics Integration
 
