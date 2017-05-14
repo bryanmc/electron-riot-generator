@@ -136,7 +136,9 @@ var pjson = require('./package.json');
 console.log(pjson.version);
 ```
 
-* http://stackoverflow.com/questions/9153571/is-there-a-way-to-get-version-from-package-json-in-nodejs-code
+* [http://stackoverflow.com/questions/9153571/is-there-a-way-to-get-version-from-package-json-in-nodejs-code](http://stackoverflow.com/questions/9153571/is-there-a-way-to-get-version-from-package-json-in-nodejs-code)
+
+---
 
 ## Fuschia OS README
 
