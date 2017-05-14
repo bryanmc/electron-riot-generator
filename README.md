@@ -39,7 +39,7 @@ More info here: [electron-analytics](https://github.com/NeutrinoMetrics/electron
 ## Quick Links
 
 * [Trending JS Repos on Github this Month](https://github.com/trending?l=javascript&since=monthly)
-* [Frontend Developers Guide for 2017](https://frontendmasters.com/books/front-end-handbook/2017)
+* [Frontend Developers Guide for 2017](https://frontendmasters.com/books/front-end-handbook/2017) \| [Developers Roadmap for 2017](https://medium.freecodecamp.com/a-roadmap-to-becoming-a-web-developer-in-2017-b6ac3dddd0cf)
 * [TodoMVC ](http://todomvc.com/)- Every example you could ever want/need to get started with any framework or library
 * [Sizzy.co](https://sizzy.co) - Responsive frontend testing
 * [Air BnB JS Style Guide](https://github.com/airbnb/javascript) - Pretty good guidelines to follow
@@ -50,6 +50,7 @@ More info here: [electron-analytics](https://github.com/NeutrinoMetrics/electron
 
 * [ES6 Template Literals](https://www.keithcirkel.co.uk/es6-template-literals/)
 * [Preact JS](https://preactjs.com)
+* [Building a Blockchain](https://medium.freecodecamp.com/from-what-is-blockchain-to-building-a-blockchain-within-an-hour-4e738efc819d)
 
 ---
 
@@ -77,9 +78,9 @@ An interesting service that could be inspiration for a project that implments so
 
 ---
 
----
+## Infinitely Scalable Web Services
 
----
+Scale
 
-
+[Website](https://stdlib.com/)
 
