@@ -121,11 +121,22 @@ The following package also looks like a possibility:
 
 * [https://github.com/npm/init-package-json](https://github.com/npm/init-package-json)
 
-And finally, NPM's documentation for package.json handling could be of some use as well:
+And finally, NPM's documentation for **package.json** handling could be of some use as well:
 
 * [https://docs.npmjs.com/files/package.json](https://docs.npmjs.com/files/package.json)
 
 ---
+
+## Reading JSON files from path
+
+In order to get values from **package.json** for example, or any JSON file for which we require parsing out values, we can quite simply require the **package.json **file as a module and then access it's values in dot notation form:
+
+```js
+var pjson = require('./package.json');
+console.log(pjson.version);
+```
+
+* http://stackoverflow.com/questions/9153571/is-there-a-way-to-get-version-from-package-json-in-nodejs-code
 
 ## Fuschia OS README
 
