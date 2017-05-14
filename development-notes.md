@@ -140,6 +140,12 @@ console.log(pjson.version);
 
 ---
 
+## Managing Terminal Output / Formatting
+
+**Dedent **is useful for messages that are too long allowing you to format them with line-breaks but still properly display in the terminal output:
+
+* https://www.npmjs.com/package/dedent
+
 ## Fuschia OS README
 
 An abstract overview of Fuschia's UI structure and base of components which could potentially be used as inspiration for the Generator UI
