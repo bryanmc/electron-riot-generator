@@ -353,10 +353,8 @@ npm install-test --global
 
 This simulates the package being installed globally and as we have added the **bin block** in **package.json** it add our custom CLI command to our PATH, in our case **gap** command is now available to use.  We could also do the same thing by installing it locally.  For more information:
 
-* https://docs.npmjs.com/files/package.json\#bin
-* https://docs.npmjs.com/cli/install-test
-
-
+* [https://docs.npmjs.com/files/package.json\#bin](https://docs.npmjs.com/files/package.json#bin)
+* [https://docs.npmjs.com/cli/install-test](https://docs.npmjs.com/cli/install-test)
 
 ## Fuschia OS README
 
