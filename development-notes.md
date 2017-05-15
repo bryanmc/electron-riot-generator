@@ -403,6 +403,8 @@ if ( process.env.npm_package_config_devmode ) {
 
 This calls a **logger **function that handles console logs and notifications.  Finally it executes 3 shell commands with the help of the **shelljs package** invoking **install-test** to reload the package globally and then two commands from the CLI itself: **dev-reload** which doesn't do much, but is there just in case in the future we need to do "stuff" when the package is reloaded, and the **help** command which logs the latest **usage **text of the CLI to terminal, which is auto-generated with the **yargs package.** This is a way to confirm that the latest changes to the CLI are in effect, including all **commands and options**.
 
+---
+
 ## Fuschia OS README
 
 An abstract overview of Fuschia's UI structure and base of components which could potentially be used as inspiration for the Generator UI
