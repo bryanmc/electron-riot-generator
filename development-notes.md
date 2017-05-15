@@ -175,7 +175,9 @@ The following describes the others:
 * build.js - a script which imports scripts from **lib** and runs a sequence of actions to complete the initial build
 * cli.js - the main CLI entry point which we will tell NPM to add to our path, executable via a custom command which we define in **package.json**.
 
-## Creating an Executable and Custom Command
+
+
+### Creating an Executable and Custom Command
 
 We need to tell NPM to add **cli.js** to our PATH when the package is installed.   On install, npm will symlink that file into prefix/bin for global installs, or ./node\_modules/.bin/ for local installs.  We add this to **package.json:**
 
@@ -183,7 +185,7 @@ We need to tell NPM to add **cli.js** to our PATH when the package is installed.
 { "bin" : { "gap" : "./script/cli.js" } }
 ```
 
-## Parsing/Validating Commands and Options
+### Parsing/Validating Commands and Options
 
 Now in **cli.js** we use the **yargs** package to parse the command line, manage options and generate help on the fly:
 
@@ -343,7 +345,7 @@ Each command block can have a parameter which is a function that executes upon t
 //...
 ```
 
-## Test Installing Globally
+### Test Installing Globally
 
 Seeing as our package is not published, we cannot install the package as we normally would via NPM's package manager, by invoking the **npm install &lt;package&gt;** command.  Luckily the CLI provides a test install method that can be run directly from the package's root directory.
 
@@ -351,10 +353,57 @@ Seeing as our package is not published, we cannot install the package as we norm
 npm install-test --global
 ```
 
-This simulates the package being installed globally and as we have added the **bin block** in **package.json** it add our custom CLI command to our PATH, in our case **gap** command is now available to use.  We could also do the same thing by installing it locally.  For more information:
+This simulates the package being installed globally and as we have added the **bin block** in **package.json** it add our custom CLI command to our PATH, in our case **`gap`**command is now available to use.  We could also do the same thing by installing it locally.  For more information:
 
 * [https://docs.npmjs.com/files/package.json\#bin](https://docs.npmjs.com/files/package.json#bin)
 * [https://docs.npmjs.com/cli/install-test](https://docs.npmjs.com/cli/install-test)
+
+## Live Reloading a Global NPM Package
+
+When we make changes during development, the package needs to be reinstalled via the **install-test** command so that the latest CLI changes take effect.  To do this we can use the **nodemon **package** **and add a **watch** command to the the **scripts** **block** in **package.json**. 
+
+```json
+"scripts": {
+    //...
+    "watch": "nodemon --watch script --watch index.js"
+}
+```
+
+Additionally, we can add a config value to the **config block **of the **package.json** file where we define a setting '**devmode**' - this is an arbitrary name, with it's value set to **true**:
+
+```json
+//...
+"config": {
+    "devmode": true
+}
+//...
+```
+
+Then in the entry point **index.js **we add a block of code that accesses this value and if set to true, does the stuff required to reload the package:
+
+```js
+// index.js
+
+if ( process.env.npm_package_config_devmode ) {
+  logger({
+    notifier: {
+      title:`Gitbook App Generator:\nDev Mode Active`,
+      message: `Starting gitbook-app-generator package!`,
+      status: `positive`
+    },
+    logs: [
+      {m: `Starting gitbook-app-generator package`, c: 'cyan'},
+      {m: `Dev Reload mode is activated.`}
+    ]
+  });
+
+  sh.exec(`npm install-test --global`)
+  sh.exec(`gap dev-reload`)
+  sh.exec(`gap help`)
+}
+```
+
+This calls a **logger **function that handles console logs and notifications.  Finally it executes 3 shell commands with the help of the **shelljs package** invoking **install-test** to reload the package globally and then two commands from the CLI itself: **dev-reload** which doesn't do much, but is there just in case in the future we need to do "stuff" when the package is reloaded, and the **help** command which logs the latest **usage **text of the CLI which is auto-generated with the **yargs package.** This is a way to confirm that the latest changes to the CLI are in effect, including all commands and options.
 
 ## Fuschia OS README
 
