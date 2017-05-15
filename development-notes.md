@@ -409,7 +409,7 @@ An abstract overview of Fuschia's UI structure and base of components which coul
 
 * [https://github.com/fuchsia-mirror/sysui](https://github.com/fuchsia-mirror/sysui)
 
-# **...**
+# ...
 
 
 
