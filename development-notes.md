@@ -175,8 +175,6 @@ The following describes the others:
 * build.js - a script which imports scripts from **lib** and runs a sequence of actions to complete the initial build
 * cli.js - the main CLI entry point which we will tell NPM to add to our path, executable via a custom command which we define in **package.json**.
 
-
-
 ### Creating an Executable and Custom Command
 
 We need to tell NPM to add **cli.js** to our PATH when the package is installed.   On install, npm will symlink that file into prefix/bin for global installs, or ./node\_modules/.bin/ for local installs.  We add this to **package.json:**
@@ -353,14 +351,14 @@ Seeing as our package is not published, we cannot install the package as we norm
 npm install-test --global
 ```
 
-This simulates the package being installed globally and as we have added the **bin block** in **package.json** it add our custom CLI command to our PATH, in our case **`gap`**command is now available to use.  We could also do the same thing by installing it locally.  For more information:
+This simulates the package being installed globally and as we have added the **bin block** in **package.json** it add our custom CLI command to our PATH, in our case `gap`command is now available to use.  We could also do the same thing by installing it locally.  For more information:
 
 * [https://docs.npmjs.com/files/package.json\#bin](https://docs.npmjs.com/files/package.json#bin)
 * [https://docs.npmjs.com/cli/install-test](https://docs.npmjs.com/cli/install-test)
 
 ## Live Reloading a Global NPM Package
 
-When we make changes during development, the package needs to be reinstalled via the **install-test** command so that the latest CLI changes take effect.  To do this we can use the **nodemon **package** **and add a **watch** command to the the **scripts** **block** in **package.json**. 
+When we make changes during development, the package needs to be reinstalled via the **install-test** command so that the latest CLI changes take effect.  To do this we can use the **nodemon **package** **and add a **watch** command to the the **scripts** **block** in **package.json**.
 
 ```json
 "scripts": {
@@ -403,7 +401,7 @@ if ( process.env.npm_package_config_devmode ) {
 }
 ```
 
-This calls a **logger **function that handles console logs and notifications.  Finally it executes 3 shell commands with the help of the **shelljs package** invoking **install-test** to reload the package globally and then two commands from the CLI itself: **dev-reload** which doesn't do much, but is there just in case in the future we need to do "stuff" when the package is reloaded, and the **help** command which logs the latest **usage **text of the CLI which is auto-generated with the **yargs package.** This is a way to confirm that the latest changes to the CLI are in effect, including all commands and options.
+This calls a **logger **function that handles console logs and notifications.  Finally it executes 3 shell commands with the help of the **shelljs package** invoking **install-test** to reload the package globally and then two commands from the CLI itself: **dev-reload** which doesn't do much, but is there just in case in the future we need to do "stuff" when the package is reloaded, and the **help** command which logs the latest **usage **text of the CLI to terminal, which is auto-generated with the **yargs package.** This is a way to confirm that the latest changes to the CLI are in effect, including all commands and options.
 
 ## Fuschia OS README
 
