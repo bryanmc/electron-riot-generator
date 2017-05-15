@@ -150,9 +150,9 @@ console.log(pjson.version);
 
 ## Basics of a Creating a CLI
 
-The **Gitbook App Generator **requires a CLI to help manage the creation and syncronisation of the Gitbook app.  The following covers the basics of creating an NPM package for our CLI. 
+The **Gitbook App Generator **requires a CLI to help manage the creation and syncronisation of the Gitbook app.  The following covers the basics of creating an NPM package for our CLI.
 
-First we create a new project directory and run **`npm init` **to generate a **package.json**.  We install required dependencies via **`npm install`** and then create the following directory structure:
+First we create a new project directory and run `npm init`** **to generate a **package.json**.  We install required dependencies via `npm install` and then create the following directory structure:
 
 ```bash
 //Package Root
@@ -174,6 +174,8 @@ The following describes the others:
 * lib - a directory which contains our targeted action scripts
 * build.js - a script which imports scripts from **lib** and runs a sequence of actions to complete the initial build
 * cli.js - the main CLI entry point which we will tell NPM to add to our path, executable via a custom command which we define in **package.json**.
+
+## Creating an Executable and Custom Command
 
 We need to tell NPM to add **cli.js** to our PATH when the package is installed.   On install, npm will symlink that file into prefix/bin for global installs, or ./node\_modules/.bin/ for local installs.  We add this to **package.json:**
 
@@ -223,7 +225,7 @@ function verifyCLICommand(parsedArgs) {
   // const options = yargs(parsedArgs).wrap(yargs.terminalWidth())
   const options = yargs
   const version = pkgjson.version;
-  
+
   //Configure yargs to handle commands and their options
   options.usage(
     dedent`Gitbook App Generator v${version}
@@ -298,7 +300,7 @@ function verifyCLICommand(parsedArgs) {
     )
     process.exit(0)
   }
-  
+
   // If somehow we arrive here, exit gracefully...
   setTimeout(function(){
     console.log('Process will exit without execution') 
@@ -332,6 +334,8 @@ Each command block can have a parameter which is a function that executes upon t
         requireArgs: true
       })
     },
+    //Function is invoked after CLI is parsed and validated
+    //Here we are simply logging out the value of the required option
     function (argv) {
       console.log(argv.repo)
     }
@@ -339,7 +343,20 @@ Each command block can have a parameter which is a function that executes upon t
 //...
 ```
 
-## 
+## Test Installing Globally
+
+Seeing as our package is not published, we cannot install the package as we normally would via NPM's package manager, by invoking the **npm install &lt;package&gt;** command.  Luckily the CLI provides a test install method that can be run directly from the package's root directory.
+
+```bash
+npm install-test --global
+```
+
+This simulates the package being installed globally and as we have added the **bin block** in **package.json** it add our custom CLI command to our PATH, in our case **gap** command is now available to use.  We could also do the same thing by installing it locally.  For more information:
+
+* https://docs.npmjs.com/files/package.json\#bin
+* https://docs.npmjs.com/cli/install-test
+
+
 
 ## Fuschia OS README
 
