@@ -148,6 +148,199 @@ console.log(pjson.version);
 
 ---
 
+## Basics of a Creating a CLI
+
+The **Gitbook App Generator **requires a CLI to help manage the creation and syncronisation of the Gitbook app.  The following covers the basics of creating an NPM package for our CLI. 
+
+First we create a new project directory and run **`npm init` **to generate a **package.json**.  We install required dependencies via **`npm install`** and then create the following directory structure:
+
+```bash
+//Package Root
+
+├── script
+│   └── lib
+│       └── some-action-script.js
+    ├── build.js
+    └── cli.js
+├── index.js
+└── package.json
+```
+
+The **some-action-script.js** is an arbitrary name which refers to a script which is created to handle one very specific task, such as cloning a repo, or creating a project directory, etc.
+
+The following describes the others:
+
+* index.js - the main entry point of our package defined as our **start **script in **package.json** script block.
+* lib - a directory which contains our targeted action scripts
+* build.js - a script which imports scripts from **lib** and runs a sequence of actions to complete the initial build
+* cli.js - the main CLI entry point which we will tell NPM to add to our path, executable via a custom command which we define in **package.json**.
+
+We need to tell NPM to add **cli.js** to our PATH when the package is installed.   On install, npm will symlink that file into prefix/bin for global installs, or ./node\_modules/.bin/ for local installs.  We add this to **package.json:**
+
+```json
+{ "bin" : { "gap" : "./script/cli.js" } }
+```
+
+## Parsing/Validating Commands and Options
+
+Now in **cli.js** we use the **yargs** package to parse the command line, manage options and generate help on the fly:
+
+* [**This package**](https://www.npmjs.com/package/yargs) is a God-send and major props to [**the contributors**](https://www.npmjs.com/package/yargs/access) who have most assuredly saved countless hours and heads of hair.
+
+```js
+#!/usr/bin/env node
+
+var pkgjson = require('../package.json');
+var dedent = require('dedent')
+const yargs = require('yargs')
+const path = require('path')
+const fs = require('fs-plus')
+var githubRepo = process.env.npm_package_config_githubRepo || "this is something invoked directly"
+
+console.log(`Running Gitbook App Generator CLI v${pkgjson.version}...`);
+
+//Run the CLI once invoked via terminal
+parseCLI();
+
+/**
+ * Parses the arguments provided with the CLI to verify usage.
+ * @return {boolean} returns true if there are no usage errors
+ */
+function parseCLI() {
+  verifyCLICommand(process.argv);
+}
+
+/**
+ * Verifies that the CLI tool receives proper arguments and handles usage issues
+ * and basic commands such as help and version.
+ *
+ * @param  {object} parsedArgs An array of args passed to the CLI omitting the
+ *                             first two items which are the NPM path and the
+ *                             CLI script path.
+ * @return {object}            Returns the options object from the yargs package
+ */
+function verifyCLICommand(parsedArgs) {
+  // const options = yargs(parsedArgs).wrap(yargs.terminalWidth())
+  const options = yargs
+  const version = pkgjson.version;
+  
+  //Configure yargs to handle commands and their options
+  options.usage(
+    dedent`Gitbook App Generator v${version}
+
+    Usage: gap <command> [options]
+
+    CLI tool for building and updating applications generated with the Gitbook
+    App Generator tool.`
+  )
+  .command(
+    'create',
+    'Create a new project from a Gitbook app generator hosted on Github',
+    function (yargs) {
+      return yargs.option('repo', {
+        alias: 'r',
+        describe: dedent `The HTTPS web URL of the Github repo that is synced with
+                          the Gitbook App Generator for this project.  To load an
+                          example, fork the following repo and import it into your
+                          Gitbook account:
+                          -----------------
+                          https://github.com/bryanmc/electron-riot-generator.git
+
+                          For more information visit: http://gitbookapp.io/docs/cli/getting-started`,
+        demandOption: true,
+        nArgs: 1,
+        requireArgs: true
+      })
+    },
+    function (argv) {
+      console.log(argv.repo)
+    }
+  )
+  .command(
+    'configure',
+    'Set global config values that persists throughout execution of commands.',
+    function (yargs) {
+      return yargs.option('options', {
+        alias: 'o',
+        describe: dedent  `An object literal containing configuration options to be
+                          set globally for this project.  These values persist even
+                          after the execution of a command. This option is unused at
+                          the moment and has no effect.`,
+        demandOption: (yargs) => (true),
+        nArgs: 1,
+        requireArgs: true
+      })
+    },
+    function (argv) {
+      console.log(argv.opts)
+    }
+  )
+  .demandCommand(
+      1,
+     dedent`You must provide a valid command.   Please review the usage above.`
+   )
+  .help('h')
+  .alias('h', 'help')
+  .version('v', 'The currrent version of the CLI', version)
+  .alias('v', 'version')
+
+  const args = options.argv
+
+  if (args.help) {
+    process.stdout.write(options.help())
+    process.exit(0)
+  }
+
+  if (args.version) {
+    process.stdout.write(
+      `Gitbook App Generator    : ${version}\n` +
+      `Node    : ${process.versions.node}\n`
+    )
+    process.exit(0)
+  }
+  
+  // If somehow we arrive here, exit gracefully...
+  setTimeout(function(){
+    console.log('Process will exit without execution') 
+    process.exit(0)
+  });
+}
+```
+
+### Executing Commands
+
+Each command block can have a parameter which is a function that executes upon the commands and their options/arguments being validated:
+
+```js
+//...
+.command(
+    'create',
+    'Create a new project from a Gitbook app generator hosted on Github',
+    function (yargs) {
+      return yargs.option('repo', {
+        alias: 'r',
+        describe: dedent `The HTTPS web URL of the Github repo that is synced with
+                          the Gitbook App Generator for this project.  To load an
+                          example, fork the following repo and import it into your
+                          Gitbook account:
+                          -----------------
+                          https://github.com/bryanmc/electron-riot-generator.git
+
+                          For more information visit: http://gitbookapp.io/docs/cli/getting-started`,
+        demandOption: true,
+        nArgs: 1,
+        requireArgs: true
+      })
+    },
+    function (argv) {
+      console.log(argv.repo)
+    }
+  )
+//...
+```
+
+## 
+
 ## Fuschia OS README
 
 An abstract overview of Fuschia's UI structure and base of components which could potentially be used as inspiration for the Generator UI
