@@ -367,7 +367,7 @@ When we make changes during development, the package needs to be reinstalled via
 }
 ```
 
-Additionally, we can add a config value to the **config block **of the **package.json** file where we define a setting '**devmode**' - this is an arbitrary name, with it's value set to **true**:
+Additionally, we can add a config value to the **config block  **of the **package.json** file where we define a setting '**devmode**' - this is an arbitrary name, with it's value set to **true**:
 
 ```json
 //...
