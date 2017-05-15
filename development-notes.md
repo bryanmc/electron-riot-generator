@@ -403,6 +403,71 @@ if ( process.env.npm_package_config_devmode ) {
 
 This calls a **logger **function that handles console logs and notifications.  Finally it executes 3 shell commands with the help of the **shelljs package** invoking **install-test** to reload the package globally and then two commands from the CLI itself: **dev-reload** which doesn't do much, but is there just in case in the future we need to do "stuff" when the package is reloaded, and the **help** command which logs the latest **usage **text of the CLI to terminal, which is auto-generated with the **yargs package.** This is a way to confirm that the latest changes to the CLI are in effect, including all **commands and options**.
 
+> #### Example Usage Output:
+
+```bash
+Usage: gap <command> [options]
+
+CLI tool for building and updating applications generated with the Gitbook
+App Generator tool.
+
+Commands:
+  dev-reload  Verify the package has been reloaded and installed globally when
+              files change.
+  create      Create a new project from a Gitbook app generator hosted on Github
+  configure   Set global config values that persists throughout execution of
+              commands.
+
+Options:
+  -h, --help     Show help                                             [boolean]
+  -v, --version  The currrent version of the CLI                       [boolean]
+```
+
+Whenever we then make changes to the files being watched, we get some terminal output as such:
+
+> #### Example Restart Output
+
+```console
+[nodemon] starting `node index.js`
+npm WARN deprecated minimatch@2.0.10: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+npm WARN deprecated minimatch@0.2.14: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+npm WARN deprecated graceful-fs@1.2.3: graceful-fs v3.0.0 and before will fail on node releases >= v7.0. Please update to graceful-fs@^4.0.0 as soon as possible. Use 'npm ls graceful-fs' to find it in the tree.
+c:\Users\bryan\AppData\Roaming\npm\gap -> c:\Users\bryan\AppData\Roaming\npm\node_modules\gitbook-app-generator\script\cli.js
+c:\Users\bryan\AppData\Roaming\npm
+`-- gitbook-app-generator@1.0.1
+
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules\gitbook-app-generator\node_modules\chokidar\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.1: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+> gitbook-app-generator@1.0.1 test C:\Users\Bryan\OneDrive\PC\Development\Desktop\gitbook-app-generator
+> echo 'No Tests'
+
+'No Tests'
+Building project...
+Running Gitbook App Generator CLI v1.0.1...
+Executed [dev-reload] at: Mon May 15 2017 19:52:35 GMT+0000 (Coordinated Universal Time)Building project...
+Running Gitbook App Generator CLI v1.0.1...
+Gitbook App Generator v1.0.1
+
+Usage: gap <command> [options]
+
+CLI tool for building and updating applications generated with the Gitbook
+App Generator tool.
+
+Commands:
+  dev-reload  Verify the package has been reloaded and installed globally when
+              files change.
+  create      Create a new project from a Gitbook app generator hosted on Github
+  configure   Set global config values that persists throughout execution of
+              commands.
+
+Options:
+  -h, --help     Show help                                             [boolean]
+  -v, --version  The currrent version of the CLI                       [boolean]
+
+[nodemon] clean exit - waiting for changes before restart
+```
+
 ---
 
 ## Fuschia OS README
