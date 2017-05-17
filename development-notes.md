@@ -358,7 +358,7 @@ This simulates the package being installed globally and as we have added the **b
 
 The following is more basic recap with a slightly different approach
 
-* https://www.hacksparrow.com/commandline-node-js-scripts-utilities-modules.html
+* [https://www.hacksparrow.com/commandline-node-js-scripts-utilities-modules.html](https://www.hacksparrow.com/commandline-node-js-scripts-utilities-modules.html)
 
 ## Live Reloading a Global NPM Package
 
