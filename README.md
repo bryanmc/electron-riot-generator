@@ -6,6 +6,8 @@ This book generates an a desktop app with Electron and Riot JS. To use this book
 
 If you have insights, comments, ideas or wish to contribute to this project, please contact me at bryan \[at\] futuristikweb {dot} com. Remember, this is an experiment. If you don't like the idea, think it's dumb, or a waste of time, you are welcome to move right along while keeping your super-ego developer hot takes to yourself.
 
+![](/charts/index.js.png)
+
 # Initial Setup Steps
 
 ---
@@ -16,7 +18,7 @@ If you have insights, comments, ideas or wish to contribute to this project, ple
 2. install** gulp-cli** globally
    1. `npm install --global gulp-cli`
 3. install gulp locally
-   1. `npm install --save-dev`**`gulp`**
+   1. `npm install --save-devgulp`
 4. install **json **globally
    1. `npm install --global json`
 
