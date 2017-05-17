@@ -35,5 +35,3 @@ json -I -f package.json -e 'this.license="%package license%"'
 
 
 
-
-

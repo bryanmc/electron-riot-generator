@@ -1,6 +1,0 @@
-# System Charts & Diagrams
-
----
-
-
-
