@@ -356,6 +356,10 @@ This simulates the package being installed globally and as we have added the **b
 * [https://docs.npmjs.com/files/package.json\#bin](https://docs.npmjs.com/files/package.json#bin)
 * [https://docs.npmjs.com/cli/install-test](https://docs.npmjs.com/cli/install-test)
 
+The following is more basic recap with a slightly different approach
+
+* https://www.hacksparrow.com/commandline-node-js-scripts-utilities-modules.html
+
 ## Live Reloading a Global NPM Package
 
 When we make changes during development, the package needs to be reinstalled via the **install-test** command so that the latest CLI changes take effect.  To do this we can use the **nodemon **package** **and add a **watch** command to the the **scripts** **block** in **package.json**.
