@@ -474,6 +474,22 @@ Options:
 
 ---
 
+## Node JS Notes
+
+Below are various notes on the Node JS internals, such as errors, process, domains and so on.
+
+### Node Process
+
+The Node **process** is a global that can be accessed from all scripts within the context of node without the **require** keyword.  
+
+#### Exiting
+
+Details on exiting with success **0**, exiting with failure **1, **and simply setting the exit code and letting the process exit organically **`process.exitCode = 1`** which in most cases is the preferred way to do so as not properly handling implicitly exiting the **process** can cause unwanted effects, such as truncating **stdout **and losing that data.
+
+* https://nodejs.org/api/process.html\#process\_process\_exit\_code
+
+## 
+
 ## Fuschia OS README
 
 An abstract overview of Fuschia's UI structure and base of components which could potentially be used as inspiration for the Generator UI
