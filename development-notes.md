@@ -541,6 +541,8 @@ Node's **stream** module offers a powerful streaming data interface for reading 
 * [https://github.com/substack/stream-handbook\#browser-streams](https://github.com/substack/stream-handbook#browser-streams)
 * [https://github.com/substack/hyperstream](https://github.com/substack/hyperstream)
 
+---
+
 ## Fuschia OS README
 
 An abstract overview of Fuschia's UI structure and base of components which could potentially be used as inspiration for the Generator UI
@@ -554,8 +556,6 @@ An abstract overview of Fuschia's UI structure and base of components which coul
 Often when researching various topics in order to develop a project, I run across various different technologies, resources and so on which generate ideas for other projects for business or fun.  Here is a growing list of those inspired by my work on Gitbook App Generator.  Please do not straight up steal my ideas, as they are quite good ;\)  If you are interested in being a major or minor contributor in any one of these projects, please contact me and if you are competent, fun to be around and have a passion for creation, depending on your level of contribution, I will gladly share whatever spoils might come from them.
 
 * "The Donald Salad" project - inspired by the real-time streaming research, the idea is to periodically check the latest news and articles about DJT and then extract quotes made by him within those articles as well as his Twitter feed.  The quotes would then be streamed in real-time to a website \(imagining, big bold fonts, perhaps styling based on quote content '1st person quote?', bold solid background color, flat design, new quote content appears without refreshing and the words / phrases pop in one after the other to give the impression that they are being said in real time, the quotes link back to the original source, or lightbox popup overlay when click, perhaps some of his more famous quotes mixed in between, etc\).
-
-
 
 * A similar concept but pages could be created for any person or topic.  Pages could contain real-time updates of quotes, extracts from articles \(use an analysis API to pull out important stuff\), and finally a video-like presentation which streams the latest images, audio from videos, text to audio with natural voice, where this presentation is like a constantly streaming, real-time channel of news around the chosen topic. All sources would be credited.  I imagine [http://reuters.tv](http://reuters.tv) as a design inspiration source with the large video full screen and text.  The system could also periodically generate content and auto submit it to social accounts, especially Facebook pages or personal profile of people who generate their own page.  Come to thing of it, users could be allowed to choose an number of topics or people that interest them to generate their own custom page, and then share that page, as well as have it auto-post to their blog, social accounts, etc with options for controlling how often it is to be posted.  The idea is that you could create a page of stuff that interests you and then watch it when you are bored.  Also videos from youtube, etc could be pulled in and played programatically via the JS player API.
 
