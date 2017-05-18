@@ -487,17 +487,77 @@ The Node **process** is a global that can be accessed from all scripts within th
 
 #### Exiting \| [docs](https://nodejs.org/api/process.html#process_process_exit_code)
 
-Details on exiting with success **0**, exiting with failure **1, **and simply setting the exit code and letting the process exit organically **`process.exitCode = 1`** which in most cases is the preferred way to do so as not properly handling implicitly exiting the **process** can cause unwanted effects, such as truncating **stdout **and losing that data.
+Details on exiting with success **0**, exiting with failure **1, **and simply setting the exit code and letting the process exit organically `process.exitCode = 1` which in most cases is the preferred way to do so as not properly handling implicitly exiting the **process** can cause unwanted effects, such as truncating **stdout **and losing that data.
 
 * [https://nodejs.org/api/process.html\#process\_process\_exit\_code](https://nodejs.org/api/process.html#process_process_exit_code)
 
+Domains \| docs
+
+### Domains \| [docs](https://nodejs.org/api/domain.html)
+
+Kind of like sub-processes that allow you more fine-grained control of requests and other things.  For example, the ability to create a new domain for each separate request, intercept requests and  so on.
+
+```js
+// create a top-level domain for the server
+const domain = require('domain')
+const http = require('http')
+const serverDomain = domain.create()
+
+/**
+ * Node domain for server requests.  Creates a separate domain for each request.
+ * @type {function}
+ */
+serverDomain.run(() => {
+  // server is created in the scope of serverDomain
+  http.createServer((req, res) => {
+    console.log(req)
+    // req and res are also created in the scope of serverDomain
+    // however, we'd prefer to have a separate domain for each request.
+    // create it first thing, and add req and res to it.
+    const reqd = domain.create()
+    reqd.add(req)
+    reqd.add(res)
+    reqd.on('error', (er) => {
+      console.error('Error', er, req.url)
+      try {
+        res.writeHead(500)
+        res.end('Error occurred, sorry.')
+      } catch (er2) {
+        console.error('Error sending 500', er2, req.url)
+      }
+    })
+  }).listen(1337)
+})
+```
+
 ---
+
+## Read / Write Streams
+
+Node's **stream** module offers a powerful streaming data interface for reading and writing any kind of data in real-time.  More info found here:
+
+* https://nodejs.org/api/stream.html
+* https://github.com/substack/stream-handbook\#html-streams-for-the-browser-and-the-server
+* https://github.com/substack/stream-handbook\#browser-streams
+* https://github.com/substack/hyperstream
 
 ## Fuschia OS README
 
 An abstract overview of Fuschia's UI structure and base of components which could potentially be used as inspiration for the Generator UI
 
 * [https://github.com/fuchsia-mirror/sysui](https://github.com/fuchsia-mirror/sysui)
+
+---
+
+## Related Ideas
+
+Often when researching various topics in order to develop a project, I run across various different technologies, resources and so on which generate ideas for other projects for business or fun.  Here is a growing list of those inspired by my work on Gitbook App Generator.  Please do not straight up steal my ideas, as they are quite good ;\)  If you are interested in being a major or minor contributor in any one of these projects, please contact me and if you are competent, fun to be around and have a passion for creation, depending on your level of contribution, I will gladly share whatever spoils might come from them.  
+
+* "The Donald Salad" project - inspired by the real-time streaming research, the idea is to periodically check the latest news and articles about DJT and then extract quotes made by him within those articles as well as his Twitter feed.  The quotes would then be streamed in real-time to a website \(imagining, big bold fonts, perhaps styling based on quote content '1st person quote?', bold solid background color, flat design, new quote content appears without refreshing and the words / phrases pop in one after the other to give the impression that they are being said in real time, the quotes link back to the original source, or lightbox popup overlay when click, perhaps some of his more famous quotes mixed in between, etc\).
+
+
+
+* A similar concept but pages could be created for any person or topic.  Pages could contain real-time updates of quotes, extracts from articles \(use an analysis API to pull out important stuff\), and finally a video-like presentation which streams the latest images, audio from videos, text to audio with natural voice, where this presentation is like a constantly streaming, real-time channel of news around the chosen topic. All sources would be credited.  I imagine http://reuters.tv as a design inspiration source with the large video full screen and text.  The system could also periodically generate content and auto submit it to social accounts, especially Facebook pages or personal profile of people who generate their own page.  Come to thing of it, users could be allowed to choose an number of topics or people that interest them to generate their own custom page, and then share that page, as well as have it auto-post to their blog, social accounts, etc with options for controlling how often it is to be posted.  The idea is that you could create a page of stuff that interests you and then watch it when you are bored.  Also videos from youtube, etc could be pulled in and played programatically via the JS player API.
 
 # ...
 
