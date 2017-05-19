@@ -559,6 +559,8 @@ Often when researching various topics in order to develop a project, I run acros
 
 * A similar concept but pages could be created for any person or topic.  Pages could contain real-time updates of quotes, extracts from articles \(use an analysis API to pull out important stuff\), and finally a video-like presentation which streams the latest images, audio from videos, text to audio with natural voice, where this presentation is like a constantly streaming, real-time channel of news around the chosen topic. All sources would be credited.  I imagine [http://reuters.tv](http://reuters.tv) as a design inspiration source with the large video full screen and text.  The system could also periodically generate content and auto submit it to social accounts, especially Facebook pages or personal profile of people who generate their own page.  Come to thing of it, users could be allowed to choose an number of topics or people that interest them to generate their own custom page, and then share that page, as well as have it auto-post to their blog, social accounts, etc with options for controlling how often it is to be posted.  The idea is that you could create a page of stuff that interests you and then watch it when you are bored.  Also videos from youtube, etc could be pulled in and played programatically via the JS player API.
 
+* Incognito real-time password/login service: http://docs.aws.amazon.com/cli/latest/reference/cognito-identity/index.html
+
 # ...
 
 
